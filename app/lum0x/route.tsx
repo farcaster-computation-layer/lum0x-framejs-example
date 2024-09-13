@@ -21,7 +21,7 @@ const frameHandler = lum0x(async (ctx) => {
 
   const excute = async (targetFid: string) => {
     if (targetFid) {
-      const data = await getBulkReactionByUser(targetFid, 1000);
+      const data = await getBulkReactionByUser(targetFid, 200);
       state.data = data;
 
       const sortedChannels = getSortedChannelsByReactions();
