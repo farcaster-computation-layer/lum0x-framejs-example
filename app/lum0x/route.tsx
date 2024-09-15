@@ -44,24 +44,20 @@ const frameHandler = lum0x(async (ctx) => {
           alt=""
           tw="absolute left-0 top-0 w-full h-full"
         />
-        {/* <div tw="flex fixed">
-          Find the channels where a specific FID is most active
-        </div> */}
-        {/* {message?.inputText && <div tw="flex">{`targetFid: ${fid}`}</div>}
-        {message && <div tw="flex">{`requesterFid: ${executedFid}`}</div>} */}
         <div tw="flex text-white">
-          <div tw="flex flex-col">
+          <div tw="flex flex-col p-30 mt-20">
             {state.sortedChannels
               ?.slice(0, 3)
-              .map(([channelId, reactionData]: any) => (
-                <div key={channelId} tw="flex flex-col">
-                  <div tw="flex"> {channelId}</div>
-                  <div tw="flex"> Total Reactions: {reactionData.total}</div>
+              .map(([channelId, reactionData]: any, i: number) => (
+                <div key={channelId} tw="flex flex-col ">
+                  <h2 tw="flex">
+                    Rank.{i + 1} {channelId}
+                  </h2>
                   <div tw="flex">
                     {Object.keys(reactionData)
                       .filter((type) => type !== "total")
                       .map((reactionType) => (
-                        <span key={reactionType}>
+                        <span key={reactionType} tw="mr-4">
                           {reactionType}: {reactionData[reactionType]}
                         </span>
                       ))}
