@@ -34,3 +34,17 @@ export function vercelURL() {
 export function createExampleURL(path: string) {
   return new URL(path, appURL()).toString();
 }
+
+export async function postLum0xTestFrameValidation(fid: number) {
+  fetch("https://testnetapi.lum0x.com/frame/validation", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      farcasterFid: fid,
+      frameUrl: `${process.env.APP_URL}/lum0x`,
+    }),
+  });
+}

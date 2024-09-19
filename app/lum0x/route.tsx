@@ -7,6 +7,7 @@ import {
   lum0x,
 } from "./lum0x";
 import { appURL } from "../utils";
+import { postLum0xTestFrameValidation } from "../utils";
 
 const frameHandler = lum0x(async (ctx) => {
   const message = ctx.message;
@@ -22,11 +23,13 @@ const frameHandler = lum0x(async (ctx) => {
 
   const excute = async (targetFid: string) => {
     if (targetFid) {
-      const data = await getBulkReactionByUser(targetFid, 200);
+      const data = await getBulkReactionByUser(targetFid, 250);
       state.data = data;
 
       const sortedChannels = getSortedChannelsByReactions();
       state.sortedChannels = sortedChannels;
+
+      await postLum0xTestFrameValidation(Number(executedFid));
     }
   };
 
